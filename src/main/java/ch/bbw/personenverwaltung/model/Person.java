@@ -1,2 +1,7 @@
-package ch.bbw.personenverwaltung.model;public class Person {
+package ch.bbw.personenverwaltung.model;
+
+import javax.persistence.Entity;
+
+@Entity
+public class Person {
 }
