@@ -28,10 +28,12 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `person` (
-  `PersonID` int(11) NOT NULL,
-  `Vorname` varchar(255) NOT NULL,
-  `Nachname` varchar(255) NOT NULL,
-  `EMail` varchar(255) NOT NULL
+  `id` int(11) NOT NULL,
+  `firstname` varchar(255) NOT NULL,
+  `lastname` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `gender` CHARACTER NOT NULL,
+  `birthdate` DATE NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -42,7 +44,7 @@ CREATE TABLE `person` (
 -- Indizes für die Tabelle `person`
 --
 ALTER TABLE `person`
-  ADD PRIMARY KEY (`PersonID`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- AUTO_INCREMENT für exportierte Tabellen
@@ -52,7 +54,7 @@ ALTER TABLE `person`
 -- AUTO_INCREMENT für Tabelle `person`
 --
 ALTER TABLE `person`
-  MODIFY `PersonID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
