@@ -32,7 +32,7 @@ CREATE TABLE `person` (
   `firstname` varchar(255) NOT NULL,
   `lastname` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
-  `gender` CHARACTER NOT NULL,
+  `gender` char(1) NOT NULL,
   `birthdate` DATE NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
