@@ -8,10 +8,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
-@AllArgsConstructor
+@AllArgsConstructor(onConstructor = @__(@Autowired))
 public class MainController {
-    @Autowired
     private PersonRepository personRepository;
+
+
     @GetMapping("/")
     public String index(Model model){
         model.addAttribute("persons", personRepository.findAll());
