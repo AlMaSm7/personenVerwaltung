@@ -1,13 +1,9 @@
 package ch.bbw.personenverwaltung.model;
 
+
 import lombok.Getter;
 import lombok.ToString;
-import org.aspectj.weaver.patterns.PerObject;
-import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
-import org.springframework.stereotype.Repository;
-
 import javax.persistence.*;
-import java.util.ArrayList;
 import java.util.Date;
 
 @Entity
