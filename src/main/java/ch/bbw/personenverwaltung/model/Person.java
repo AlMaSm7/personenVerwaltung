@@ -13,11 +13,11 @@ public class Person {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Getter private Long id;
-    @Getter private String lastname;
-    @Getter private String firstname;
-    @Getter private char gender;
-    @Getter private String email;
+    @Getter @Setter private Long id;
+    @Getter @Setter private String lastname;
+    @Getter @Setter String firstname;
+    @Getter @Setter char gender;
+    @Getter @Setter private String email;
     @Temporal(TemporalType.DATE)
     @Getter @Setter private Date birthdate;
     @Transient

@@ -10,6 +10,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
 import java.text.ParseException;
 import java.util.List;
 
@@ -25,10 +27,17 @@ public class MainController {
         return "index";
     }
 
-    @PostMapping("/delete/{personId}")
-    public String delUser(@PathVariable("personId") int personId) {
+    @PostMapping("/delete/{id}")
+    public String delUser(@PathVariable("id") long personId, RedirectAttributes redirectAttributes) {
         System.out.println(personId);
-        personRepository.deleteById((long) personId);
+        try{
+            personRepository.deleteById(personId);
+            redirectAttributes.addFlashAttribute("success", "Person deleted");
+        } catch (Exception e){
+            e.printStackTrace();
+            redirectAttributes.addFlashAttribute("fail", "Person could not be deleted");
+        }
+
         return "redirect:/";
     }
 
