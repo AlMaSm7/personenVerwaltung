@@ -10,7 +10,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-
 import java.text.ParseException;
 import java.util.List;
 
@@ -22,35 +21,28 @@ public class MainController {
 
     @GetMapping("/")
     public String index(Model model) {
-        List<Person> persons = (List<Person>) personRepository.findAll();
-        persons.stream().forEach(person -> {
-            try {
-                person.setOfficialDate(
-                        DateConverter.convertDate(person.getDate())
-                );
-            } catch (ParseException e) {
-                e.printStackTrace();
-            }
-        });
-        model.addAttribute("persons", persons);
+        model.addAttribute("persons", getPersons());
         return "index";
     }
 
     @PostMapping("/delete/{personId}")
-    public String delUser(@PathVariable("personId") int personId, Model model) {
+    public String delUser(@PathVariable("personId") int personId) {
         System.out.println(personId);
         personRepository.deleteById((long) personId);
+        return "redirect:/";
+    }
+
+    private List<Person> getPersons() {
         List<Person> persons = (List<Person>) personRepository.findAll();
         persons.stream().forEach(person -> {
             try {
                 person.setOfficialDate(
-                        DateConverter.convertDate(person.getDate())
+                        DateConverter.convertDate(person.getBirthdate())
                 );
             } catch (ParseException e) {
                 e.printStackTrace();
             }
         });
-        model.addAttribute("persons", persons);
-        return "index";
+        return persons;
     }
 }
