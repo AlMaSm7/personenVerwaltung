@@ -2,8 +2,11 @@ package ch.bbw.personenverwaltung.model;
 
 
 import lombok.Getter;
+import lombok.Setter;
 import lombok.ToString;
 import javax.persistence.*;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 @Entity
@@ -18,5 +21,6 @@ public class Person {
     @Getter private char gender;
     @Getter private String email;
     @Temporal(TemporalType.DATE)
-    @Getter private Date date;
+    @Getter @Setter private Date date;
+    @Getter @Setter private String officialDate;
 }
