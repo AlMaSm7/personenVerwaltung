@@ -2,57 +2,61 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <title>Person registration</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="Personenverwaltung" />
-    <meta name="author" content="Alex Severin" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta name="description" content="Personenverwaltung"/>
+    <meta name="author" content="Alex Severin"/>
 
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" th:href="@{/bootstrap-4.1.3/css/bootstrap.min.css}"/>
 </head>
 <body>
-    <div class="container vh-100">
-        <div class="row">
-            <div class="alert alert-success alert-dismissible fade show col-12" role="alert" th:text="${success}" th:if="${success}">
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="alert alert-danger col-12" role="alert" th:text="${fail}" th:if="${fail}"></div>
-            <div class="d-flex col-12 col-lg-9 justify-content-lg-start justify-content-center align-content-center">
-                <h1>Personenverwaltung</h1>
-            </div>
-            <div class="d-flex col-12 col-lg-3 justify-content-center align-items-center justify-content-lg-end">
-               <button type="button" class="btn btn-primary">Add Person</button>
-            </div>
+<div class="container vh-100">
+    <div class="row">
+        <div class="alert alert-success alert-dismissible fade show col-12" role="alert" th:text="${success}"
+             th:if="${success}">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
         </div>
-        <div class="row mt-5">
-            <table class="table">
-                <thead>
-                <tr>
-                    <th scope="col">First</th>
-                    <th scope="col">Lastname</th>
-                    <th scope="col">Birthdate</th>
-                </tr>
-                </thead>
-                <tbody th:each="person: ${persons}">
-                    <tr>
-                        <th scope="row" th:text="${person.firstname}"></th>
-                        <td th:text="${person.lastname}"></td>
-                        <td th:text="${person.officialDate}"></td>
-                        <td>
-                            <form method="POST" th:action="@{delete/{personId} (personId=${person.id})}" onSubmit="return confirm('Do you really want to delete this person?');">
-                                <button class="btn btn-danger" type="submit">delete</button>
-                            </form>
-                        </td>
-                    </tr>
-                <div >
-            </div>
+        <div class="alert alert-danger col-12" role="alert" th:text="${fail}" th:if="${fail}"></div>
+        <div class="d-flex col-12 col-lg-9 justify-content-lg-start justify-content-center align-content-center">
+            <h1>Personenverwaltung</h1>
         </div>
-
+        <div class="d-flex col-12 col-lg-3 justify-content-center align-items-center justify-content-lg-end">
+            <button type="button" class="btn btn-primary">Add Person</button>
+        </div>
+    </div>
+    <div class="row mt-5">
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">First</th>
+                <th scope="col">Lastname</th>
+                <th scope="col">Birthdate</th>
+            </tr>
+            </thead>
+            <tbody th:each="person: ${persons}">
+            <tr>
+                <th scope="row" th:text="${person.firstname}"></th>
+                <td th:text="${person.lastname}"></td>
+                <td th:text="${person.officialDate}"></td>
+                <td>
+                    <form method="POST" th:action="@{delete/{personId} (personId=${person.id})}"
+                          onSubmit="return confirm('Do you really want to delete this person?');">
+                        <button class="btn btn-danger" type="submit">delete</button>
+                    </form>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <div>
+        </div>
+    </div>
 </div>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script th:src="@{/bootstrap-4.1.3/js/bootstrap.min.js}"></script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script th:src="@{/bootstrap-4.1.3/js/bootstrap.min.js}"></script>
 </body>
 </html>
