@@ -54,4 +54,9 @@ public class MainController {
         });
         return persons;
     }
+
+    @GetMapping("/form")
+    public String addPerson(){
+        return "add_person";
+    }
 }
