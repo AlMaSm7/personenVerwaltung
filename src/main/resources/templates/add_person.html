@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Add Person</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" th:href="@{/bootstrap-4.1.3/css/bootstrap.min.css}"/>
 </head>
@@ -10,44 +11,59 @@
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"
         integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
         crossorigin="anonymous"></script>
-<div class="container vh-100">
+<div class="container">
     <div class="row">
         <div class="col-12">
             <h1>Add Person</h1>
         </div>
     </div>
-    <form>
-        <div class="form-group">
-            <label for="exampleInputEmail1">Email address</label>
-            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                   placeholder="Enter email">
-            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+    <div class="row">
+        <div class="col-12">
+            <form th:action="@{/addperson}" th:object="${person}" method="post">
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Email address</label>
+                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                           placeholder="Enter email" th:field="*{email}">
+                    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Firstname</label>
+                    <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Firstname..."
+                           th:field="*{firstname}">
+                </div>
+                <div class="form-group">
+                    <label for="lastname">Lastname</label>
+                    <input type="text" class="form-control" id="lastname" placeholder="Lastname..." th:field="*{lastname}">
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="m"
+                           checked th:field="*{gender}">
+                    <label class="form-check-label" for="exampleRadios1">
+                        female
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="f"
+                           th:field="*{gender}">
+                    <label class="form-check-label" for="exampleRadios2">
+                        male
+                    </label>
+                </div>
+                <div class="form-group">
+                    <label for="birthdate">Birthdate</label>
+                    <input th:value="${person.birthdate}" th:field="*{birthdate}" id="birthdate" class="form-control" type="date" />
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+                <script>
+                    $(document).ready(function(){
+                        $('#birthdate').dateTime({
+                            format: 'dd.mm.yyyy'
+                        });
+                    })
+                </script>
+            </form>
         </div>
-        <div class="form-group">
-            <label for="exampleInputPassword1">Firstname</label>
-            <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Firstname...">
-        </div>
-        <div class="form-group">
-            <label for="lastname">Lastname</label>
-            <input type="text" class="form-control" id="lastname" placeholder="Lastname...">
-        </div>
-        <div class="form-check">
-            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1"
-                   checked>
-            <label class="form-check-label" for="exampleRadios1">
-                female
-            </label>
-        </div>
-        <div  class="form-check">
-            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
-            <label class="form-check-label" for="exampleRadios2">
-                male
-            </label>
-        </div>
-        <div style="margin-bottom: 2.5%; "><br><label for="start">Start date</label><br>
-            <input style="border: 1px solid #ced4da; color: #495057; padding: 0.8%" type="date" id="start" name="trip-start"<br></div>
-        <button type="submit" class="btn btn-primary">Submit</button>
-    </form>
+    </div>
 </div>
 <script th:src="@{/bootstrap-4.1.3/js/bootstrap.min.js}"></script>
 </body>
