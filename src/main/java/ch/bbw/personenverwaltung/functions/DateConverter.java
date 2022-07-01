@@ -9,7 +9,7 @@ import java.util.Date;
 public class DateConverter {
     public static String convertDate(LocalDate date) throws ParseException {
         SimpleDateFormat formatter1 = new SimpleDateFormat("yyyy-MM-dd");
-        SimpleDateFormat formatter2  = new SimpleDateFormat("dd.MM.yyyy");
+        SimpleDateFormat formatter2 = new SimpleDateFormat("dd.MM.yyyy");
         Date date2 = formatter1.parse(date.toString());
         return formatter2.format(date2);
     }

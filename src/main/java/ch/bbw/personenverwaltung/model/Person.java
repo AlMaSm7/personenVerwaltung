@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.Size;
@@ -17,19 +18,33 @@ public class Person {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Getter @Setter private Long id;
+    @Getter
+    @Setter
+    private Long id;
     @NotNull
     @Size(min = 2, max = 220)
-    @Getter @Setter private String lastname;
+    @Getter
+    @Setter
+    private String lastname;
     @NotNull
     @Size(min = 2, max = 220)
-    @Getter @Setter String firstname;
+    @Getter
+    @Setter
+    String firstname;
     @NotNull
-    @Getter @Setter char gender;
+    @Getter
+    @Setter
+    char gender;
     @Email
-    @Getter @Setter private String email;
+    @Getter
+    @Setter
+    private String email;
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
-    @Getter @Setter private LocalDate birthdate;
+    @Getter
+    @Setter
+    private LocalDate birthdate;
     @Transient
-    @Getter @Setter private String officialDate;
+    @Getter
+    @Setter
+    private String officialDate;
 }
