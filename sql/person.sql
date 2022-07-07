@@ -64,6 +64,6 @@ COMMIT;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 
 INSERT INTO `persons`.`person`(firstname, lastname, email, gender, birthdate) VALUES ('Alex', 'Smolders', 'alex@email.com', 'm',
-                                                                          STR_TO_DATE('19.01.2022', '%d.%m.%y')),
+                                                                          STR_TO_DATE('19.01.2002', '%d.%m.%y')),
                                                                          ('Severin', 'Machaz', 'sevi@email.com', 'm',
-                                                                          STR_TO_DATE('1.04.2022', '%d.%m.%y'))
+                                                                          STR_TO_DATE('1.04.2002', '%d.%m.%y'))
