@@ -69,7 +69,7 @@ public class MainController {
             personRepository.save(person);
             redirectAttributes.addFlashAttribute("success", "Person added");
         } catch (Exception e) {
-            redirectAttributes.addFlashAttribute("fail", "Person could not be added");
+            redirectAttributes.addFlashAttribute("fail", "Person could not be added, make sure you're older than 2005!");
             e.printStackTrace();
         }
         return "redirect:/";
@@ -84,7 +84,7 @@ public class MainController {
             attributes.addFlashAttribute("success", "Person" + person.getFirstname()
                     + "was successfully edited");
         } catch (Exception e) {
-            attributes.addFlashAttribute("fail", "Person could not be edited");
+            attributes.addFlashAttribute("fail", "Person could not be edited, make sure you're older than 2005!");
             e.printStackTrace();
         }
         return "redirect:/";

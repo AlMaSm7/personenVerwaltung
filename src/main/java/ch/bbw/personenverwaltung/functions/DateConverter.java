@@ -18,6 +18,10 @@ public class DateConverter {
         DateTimeFormatter formatter = DateTimeFormatter.ISO_LOCAL_DATE;
         date = LocalDate.parse(date.format(formatter));
         System.out.println(date.toString());
+        if(date.getYear() > 2005){
+            System.out.println("here");
+            throw new Exception("person is to young");
+        }
         return date;
     }
 }
